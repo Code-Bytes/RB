@@ -10,7 +10,7 @@ Required Params:
 
 * `code` => `string`, temporary code returned by callback URL
 
-* `clientID` => `string`, known client ID of github App
+* `clientId` => `string`, known client ID of github App
 
 * `redirectUri` => `string`, callback URL
 
