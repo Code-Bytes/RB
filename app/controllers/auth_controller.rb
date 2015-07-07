@@ -4,7 +4,14 @@ class AuthController < ApplicationController
 		#coordinate the params being passed into the github class
 		github = Github.new(params)
 		@user = User.find_or_create_by_auth(github)
-		render json: { token: Token.encode(@user.id) }
+		render json: { 
+			token: Token.encode(@user.id) 
+			user: {
+				username: @user.username,
+				email: @user.email,
+				avatar: @user.avatar
+			}
+		}
 	end
 
 end

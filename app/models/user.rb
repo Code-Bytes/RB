@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 		new_user.update(
       username: data['login'],
       email: data['email'],
- 			github: data['id']
+ 			github: data['id'],
+ 			avatar: data['avatar_url']
     )
 
 		new_user
