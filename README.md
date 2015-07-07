@@ -1,6 +1,8 @@
 CodeByte API
 
-`POST 'auth/github'`
+`base_url: https://pacific-hamlet-4796.herokuapp.com/`
+
+`POST '/auth/github'`
 
 Returns a JWT token.
 
