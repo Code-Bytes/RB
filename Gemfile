@@ -2,16 +2,24 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.1'
-
+gem 'jwt'
+gem 'httpclient'
+gem 'active_model_serializers'
 gem 'rails-api'
+gem 'pg'
+gem 'puma'
+gem 'bcrypt', '~> 3.1.7'
 
-gem 'spring', :group => :development
+group :production, do 
+	gem 'rails_12factor'
+end
 
-
-gem 'sqlite3'
-
-
-
+group :development, :test do 
+	gem 'pry'
+	gem 'pry-rails'
+	gem 'byebug'
+	gem 'spring'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
