@@ -10,7 +10,7 @@ gem 'pg'
 gem 'puma'
 gem 'bcrypt', '~> 3.1.7'
 
-group :production, do 
+group :production do 
 	gem 'rails_12factor'
 end
 
