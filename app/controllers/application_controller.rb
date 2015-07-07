@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::API
 	protect_from_forgery with: :null_session
 
-	private
+	#protected or private?
+	protected
 
 	def authenticate!
 		unauthorized! unless current_user
