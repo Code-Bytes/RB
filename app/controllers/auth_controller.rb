@@ -5,7 +5,7 @@ class AuthController < ApplicationController
 		github = Github.new(params)
 		@user = User.find_or_create_by_auth(github)
 		render json: { 
-			token: Token.encode(@user.id) 
+			token: Token.encode(@user.id), 
 			user: {
 				username: @user.username,
 				email: @user.email,
