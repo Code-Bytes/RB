@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 		github.get_data!
 		data = github.data
 
-		new_user = find_by(github: data['id']) || find_or_create_by(email: data['email']) do |user|
+		new_user = find_by(github: data['id']) || find_or_create_by(github: data['id']) do |user|
 			user.password = SecureRandom.hex
 		end
 
