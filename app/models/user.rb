@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
 
+	has_many :followers
+	has_many :following
+	has_many :posts
+	has_many :gists
+
 	def self.find_or_create_by_auth(github)
 
 		github.get_data!
@@ -13,7 +18,15 @@ class User < ActiveRecord::Base
       username: data['login'],
       email: data['email'],
  			github: data['id'],
- 			avatar: data['avatar_url']
+ 			avatar: data['avatar_url'],
+ 			company: data['company'],
+ 			url: data['url'],
+ 			blog: data['blog'],
+ 			location: data['location'],
+ 			follower_count: data['followers'],
+ 			following_count: data['following'],
+ 			public_gists: data['public_gists'],
+ 			hireable: data['hireable']
     )
 
 		new_user

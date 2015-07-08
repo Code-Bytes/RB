@@ -9,7 +9,15 @@ class AuthController < ApplicationController
 			user: {
 				username: @user.username,
 				email: @user.email,
-				avatar: @user.avatar
+				avatar: @user.avatar,
+				company: @user.company
+	 			url: @user.url
+	 			blog: @user.blog
+	 			location: @user.location
+	 			follower_count: @user.followers
+	 			following_count: @user.following
+	 			public_gists: @user.public_gists
+	 			hireable: @user.hireable
 			}
 		}
 	end
