@@ -10,13 +10,13 @@ class AuthController < ApplicationController
 				username: @user.username,
 				email: @user.email,
 				avatar: @user.avatar,
-				company: @user.company
-	 			url: @user.url
-	 			blog: @user.blog
-	 			location: @user.location
-	 			follower_count: @user.followers
-	 			following_count: @user.following
-	 			public_gists: @user.public_gists
+				company: @user.company,
+	 			url: @user.url,
+	 			blog: @user.blog,
+	 			location: @user.location,
+	 			follower_count: @user.follower_count,
+	 			following_count: @user.following_count,
+	 			public_gists: @user.public_gists,
 	 			hireable: @user.hireable
 			}
 		}
