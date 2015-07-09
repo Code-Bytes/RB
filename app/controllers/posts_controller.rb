@@ -1,11 +1,7 @@
 class PostsController < ApplicationController
-  def new
-  end
+  before_action :authenticate!, only: [:create, :update, :delete]
 
   def create
-  end
-
-  def edit
   end
 
   def update
