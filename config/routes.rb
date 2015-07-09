@@ -8,16 +8,11 @@ scope defaults: {format: 'json'} do
 
 # Post Routes
   get '/posts', to: 'posts#index'
-  get '/user/:username/post/:id', to: 'posts#post'
-  get '/posts/new', to: 'posts#new'
+  get '/user/:username/posts/:id', to: 'posts#post'
+  get '/posts/:id', to: 'posts#show'
   post '/posts', to: 'posts#create'
-  get '/user/:username/post/:id/edit', to: 'posts#edit'
-  put 'user/:username/post/:id', to: 'posts#update'
+  put '/posts/:id', to: 'posts#update'
   delete '/posts/:id', to: 'posts#destroy'
-
-  # get '/posts/:id', to: 'posts#show'
-  # get '/posts/:id/edit', to: 'posts#edit'
-  # put '/posts/:id', to: 'posts#update'
 end
 
 end
