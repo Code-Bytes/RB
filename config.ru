@@ -11,6 +11,6 @@ use Rack::Cors do
     resource '*',
              :headers => :any,
              :expose  => ['Access-Token', 'Authorization', 'expiry', 'token-type', 'uid', 'client'],
-             :methods => [:get, :post, :delete, :put, :patch]
+             :methods => [:get, :post, :delete, :put, :patch, :options]
   end
 end
