@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-	before_filter :set_current_user, :authenticate_user!
+	before_filter :set_current_user, :authenticate!
 
 	def show
 		render json: current_user
