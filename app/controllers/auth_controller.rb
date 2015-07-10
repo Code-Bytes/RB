@@ -7,7 +7,7 @@ class AuthController < ApplicationController
 		render json: { 
 			token: Token.encode(@user.id), 
 			user: {
-				user_id: @user.user_id,
+				user_id: @user.id,
 				username: @user.username,
 				email: @user.email,
 				avatar: @user.avatar,
