@@ -32,7 +32,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @post = Post.order(written_at: :desc)
+    @posts = Post.order(written_at: :desc)
+    render json: @posts, status: :ok
   end
 
   private
