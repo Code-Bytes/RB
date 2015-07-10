@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_current_user
   before_action :authenticate!, only: [:create, :update, :delete]
 
   def create
