@@ -1,9 +1,6 @@
 class User < ActiveRecord::Base
 
-	# has_many :followers
-	# has_many :following
-	# has_many :posts
-	# has_many :gists
+	has_many :posts
 
 	def self.find_or_create_by_auth(github)
 
