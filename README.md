@@ -62,7 +62,7 @@ Status code:`200`
 
 `GET '/users'`
 
-No required params
+No required params.
 
 Example Response:
 ```json
@@ -92,7 +92,9 @@ Example Response:
 
 `GET '/users/:id'`
 
-No required params
+Required params:
+
+* `code` => `int`, user id
 
 Example Response:
 
@@ -121,7 +123,11 @@ Example Response:
 
 `GET '/users/:id/posts'`
 
-No required params
+Required params:
+
+* `code` => `int`, user id
+
+
 
 Example Response:
 
@@ -136,17 +142,6 @@ Example Response:
     "updated_at": "2015-07-10T00:50:43.473Z"
   }
 ]
-```
-
-###Get post from a user
-
-`GET '/users/:username/posts/:id'`
-
-No required params
-
-Example Response:
-
-```json
 ```
 
 ###Create a Post
