@@ -2,6 +2,33 @@
 
 `base_url: https://pacific-hamlet-4796.herokuapp.com/`
 
+###Quick Find:
+
+####Users
+
+* [Authenticate User](#authenticate-user)
+`POST '/auth/github'`
+* [Get Authenticated User](#get-authenticated-user)
+`GET '/me'`
+* [List All Users](#list-all-users)
+`GET '/users'`
+* [Find User By Id](#find-user-by-id)
+`GET /users/:id`
+* [List a User's Posts](#list-a-users-posts)
+`GET /users/:id/posts`
+
+####Posts
+
+* [Create a Post](#create-a-post)
+`POST '/posts'`
+* [Get all Posts](#get-all-posts)
+`GET '/posts'`
+* [Update a Post](update-a-post)
+`PUT '/posts/:id'`
+* [Delete a Post](#delete-a-post)
+`DELETE '/posts/:id'`
+
+
 All authenticated requests are made by passing 'Authorization' in the request header.  That header will contain the JWT token returned after authentication.
 
 ###Authenticate User
@@ -43,18 +70,23 @@ Example response:
 Status code:`200`
 
 ```json
-  "user": {
-    "username": "taylor-d",
+   {
+    "id": 18,
     "email": "mdaugherty6@gmail.com",
+    "password": "06becd1d7421eeff5846e0e2c3a4b27c",
+    "username": "taylor-d",
+    "github": "9401828",
+    "created_at": "2015-07-08T17:57:24.732Z",
+    "updated_at": "2015-07-10T00:30:14.142Z",
     "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
     "company": "",
     "url": "https://api.github.com/users/taylor-d",
-    "blog": "http://www.taylormath.com",
     "location": "Atlanta, GA",
     "follower_count": 13,
     "following_count": 17,
     "public_gists": 3,
-    "hireable": true
+    "hireable": true,
+    "blog": "http://www.taylormath.com"
   }
 ```
 
@@ -94,7 +126,7 @@ Example Response:
 
 Required params:
 
-* `id` => `int`, user id
+* `id` => `string`, user id
 
 Example Response:
 
@@ -125,7 +157,7 @@ Example Response:
 
 Required params:
 
-* `id` => `int`, user id
+* `id` => `string`, user id
 
 
 Example Response:
