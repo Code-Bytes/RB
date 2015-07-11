@@ -94,7 +94,7 @@ Example Response:
 
 Required params:
 
-* `code` => `int`, user id
+* `id` => `int`, user id
 
 Example Response:
 
@@ -125,8 +125,7 @@ Example Response:
 
 Required params:
 
-* `code` => `int`, user id
-
+* `id` => `int`, user id
 
 
 Example Response:
