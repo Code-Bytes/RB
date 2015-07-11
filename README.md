@@ -58,6 +58,92 @@ Status code:`200`
   }
 ```
 
+###List all Users
+
+`GET '/users'`
+
+No required params.
+
+Example Response:
+```json
+[
+  {
+    "id": 18,
+    "email": "mdaugherty6@gmail.com",
+    "password": "06becd1d7421eeff5846e0e2c3a4b27c",
+    "username": "taylor-d",
+    "github": "9401828",
+    "created_at": "2015-07-08T17:57:24.732Z",
+    "updated_at": "2015-07-10T00:30:14.142Z",
+    "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
+    "company": "",
+    "url": "https://api.github.com/users/taylor-d",
+    "location": "Atlanta, GA",
+    "follower_count": 13,
+    "following_count": 17,
+    "public_gists": 3,
+    "hireable": true,
+    "blog": "http://www.taylormath.com"
+  }
+]
+```
+
+###Find user by id
+
+`GET '/users/:id'`
+
+Required params:
+
+* `code` => `int`, user id
+
+Example Response:
+
+```json
+{
+  "id": 18,
+  "email": "mdaugherty6@gmail.com",
+  "password": "06becd1d7421eeff5846e0e2c3a4b27c",
+  "username": "taylor-d",
+  "github": "9401828",
+  "created_at": "2015-07-08T17:57:24.732Z",
+  "updated_at": "2015-07-10T00:30:14.142Z",
+  "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
+  "company": "",
+  "url": "https://api.github.com/users/taylor-d",
+  "location": "Atlanta, GA",
+  "follower_count": 13,
+  "following_count": 17,
+  "public_gists": 3,
+  "hireable": true,
+  "blog": "http://www.taylormath.com"
+}
+```
+
+###List a user's posts
+
+`GET '/users/:id/posts'`
+
+Required params:
+
+* `code` => `int`, user id
+
+
+
+Example Response:
+
+```json
+[
+  {
+    "id": 1,
+    "title": "test",
+    "content": "test",
+    "user_id": 18,
+    "created_at": "2015-07-10T00:50:43.473Z",
+    "updated_at": "2015-07-10T00:50:43.473Z"
+  }
+]
+```
+
 ###Create a Post
 
 `POST '/posts'`
@@ -170,6 +256,8 @@ Status code:`200`
 ```json
 {}
 ```
+
+
 
 
 
