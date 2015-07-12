@@ -19,6 +19,7 @@ scope defaults: {format: 'json'} do
       put 'posts/like', to: 'posts#upvote'
       put 'posts/dislike', to: 'posts#downvote'
     end
+  end
 
 # User Routes
 
