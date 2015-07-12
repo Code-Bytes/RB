@@ -9,6 +9,7 @@ gem 'rails-api'
 gem 'pg'
 gem 'puma'
 gem 'bcrypt', '~> 3.1.7'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :production do 
 	gem 'rack-cors', require: 'rack/cors'
