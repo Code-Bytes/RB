@@ -28,6 +28,13 @@
 * [Delete a Post](#delete-a-post)
 `DELETE '/posts/:id'`
 
+####Voting
+
+* [Add an Upvote](#add-an-upvote)
+`PUT 'posts/like'`
+* [Add a Downvote](#get-all-posts)
+`PUT 'posts/dislike'`
+
 
 All authenticated requests are made by passing 'Authorization' in the request header.  That header will contain the JWT token returned after authentication.
 
@@ -286,6 +293,38 @@ Status code:`200`
 
 ```json
 {}
+```
+
+###Add an Upvote
+
+`PUT 'posts/like'`
+
+Adds an upvote (agreement).
+
+No required params.
+
+Example Response:
+
+Status code:`200`
+
+```json
+having issues spinning up a server on my local machine. will add json response on Monday
+```
+
+###Add a Downvote
+
+`PUT 'posts/dislike'`
+
+Adds a downvote (agreement).
+
+No required params.
+
+Example Response:
+
+Status code:`200`
+
+```json
+having issues spinning up a server on my local machine. will add json response on Monday
 ```
 
 
