@@ -297,7 +297,7 @@ Status code:`200`
 
 ###Add an Upvote
 
-`PUT 'posts/like'`
+`PUT 'posts/:id/like'`
 
 Adds an upvote (agreement).
 
@@ -313,7 +313,7 @@ having issues spinning up a server on my local machine. will add json response o
 
 ###Add a Downvote
 
-`PUT 'posts/dislike'`
+`PUT 'posts/:id/dislike'`
 
 Adds a downvote (disagreement).
 
