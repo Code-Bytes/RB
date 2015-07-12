@@ -315,7 +315,7 @@ having issues spinning up a server on my local machine. will add json response o
 
 `PUT 'posts/dislike'`
 
-Adds a downvote (agreement).
+Adds a downvote (disagreement).
 
 No required params.
 
