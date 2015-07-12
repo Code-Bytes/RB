@@ -6,18 +6,11 @@ scope defaults: {format: 'json'} do
   get '/me', to: 'api#show'
   put '/me', to: 'api#update'
 
-# Post Routes
-  get '/posts', to: 'posts#index'
-  get '/posts/:id', to: 'posts#show'
-  post '/posts', to: 'posts#create'
-  put '/posts/:id', to: 'posts#update'
-  delete '/posts/:id', to: 'posts#destroy'
-
 # Voting Routes
   resources :posts do
     member do
-      put 'posts/like', to: 'posts#upvote'
-      put 'posts/dislike', to: 'posts#downvote'
+      put '/like', to: 'posts#upvote'
+      put '/dislike', to: 'posts#downvote'
     end
   end
 
