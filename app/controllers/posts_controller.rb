@@ -36,6 +36,24 @@ class PostsController < ApplicationController
     render json: @posts, status: :ok
   end
 
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote_by current_user
+    @post.vote_registered?
+    render json: @post, status: :ok
+  else 
+    render json: @post, status: :unprocessable_entity
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.downvote_by current_user
+    @post.vote_registered?
+    render json: @post, status: :ok
+  else 
+    render json: @post, status: :unprocessable_entity
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :content, :tag_names)

@@ -13,6 +13,13 @@ scope defaults: {format: 'json'} do
   put '/posts/:id', to: 'posts#update'
   delete '/posts/:id', to: 'posts#destroy'
 
+# Voting Routes
+  resources :posts do
+    member do
+      put 'posts/like', to: 'posts#upvote'
+      put 'posts/dislike', to: 'posts#downvote'
+    end
+
 # User Routes
 
 	get '/users', to: 'users#index'
