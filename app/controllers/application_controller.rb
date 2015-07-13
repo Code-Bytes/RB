@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-	include ActionController::Serialization
 	#protected or private?
 	protected
 
