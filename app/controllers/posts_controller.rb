@@ -38,8 +38,8 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:id])
-    @post.upvote_by current_user
-    @post.vote_registered?
+    if @post.upvote_by current_user
+      @post.vote_registered?
     render json: @post, status: :ok
   else 
     render json: @post, status: :unprocessable_entity
@@ -47,8 +47,8 @@ class PostsController < ApplicationController
 
   def downvote
     @post = Post.find(params[:id])
-    @post.downvote_by current_user
-    @post.vote_registered?
+    if @post.downvote_by current_user
+      @post.vote_registered?
     render json: @post, status: :ok
   else 
     render json: @post, status: :unprocessable_entity
