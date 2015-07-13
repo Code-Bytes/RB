@@ -1,8 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  self.root = false
-
-  attributes :id, :username, :email
-
-  #how do these work??
-  
+  attributes :id, :username, :email, :avatar, :company, :url, :blog, :location
 end
