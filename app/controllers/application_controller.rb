@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-	include ActiveModel::Serialization
+	include ActionController::Serialization
 	#protected or private?
 	protected
 
