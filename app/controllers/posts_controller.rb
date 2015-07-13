@@ -32,8 +32,13 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(updated_at: :desc)
-    render json: @posts, status: :ok
+    @post = Post.order(updated_at: :desc)
+    render json: @post, status: :ok
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    render json: @post, status: :ok
   end
 
   def upvote
