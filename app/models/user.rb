@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
  			github: data['id'],
  			avatar: data['avatar_url'],
  			company: data['company'],
- 			url: data['url'],
+ 			url: data['html_url'],
  			blog: data['blog'],
  			location: data['location'],
  			follower_count: data['followers'],
