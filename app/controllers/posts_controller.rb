@@ -46,8 +46,9 @@ class PostsController < ApplicationController
     if @post.upvote_by current_user
       @post.vote_registered?
     render json: @post, status: :ok
-  else 
-    render json: @post, status: :unprocessable_entity
+    else 
+      render json: @post, status: :unprocessable_entity
+    end
   end
 
   def downvote
@@ -55,8 +56,9 @@ class PostsController < ApplicationController
     if @post.downvote_by current_user
       @post.vote_registered?
     render json: @post, status: :ok
-  else 
-    render json: @post, status: :unprocessable_entity
+    else 
+      render json: @post, status: :unprocessable_entity
+    end
   end
 
   private
