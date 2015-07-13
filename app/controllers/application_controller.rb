@@ -1,25 +1,26 @@
 class ApplicationController < ActionController::API
-	#protected or private?
-	protected
+  include ActionController::Serialization
+    #protected or private?
+    protected
 
-	def authenticate!
-		unauthorized! unless current_user
-	end
+    def authenticate!
+        unauthorized! unless current_user
+    end
 
-	def unauthorized!
-		head :unauthorized
-	end
+    def unauthorized!
+        head :unauthorized
+    end
 
-	def current_user
-		@current_user
-	end
+    def current_user
+        @current_user
+    end
 
-	def set_current_user
-		token = request.headers['Authorization'].to_s.split(' ').last
-		return unless token
+    def set_current_user
+        token = request.headers['Authorization'].to_s.split(' ').last
+        return unless token
 
-		payload = Token.new(token)
+        payload = Token.new(token)
 
-		@current_user = User.find(payload.user_id) if payload.valid?
-	end
+        @current_user = User.find(payload.user_id) if payload.valid?
+    end
 end
