@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @post = Post.order(updated_at: :desc)
+    @post = Post.order(cached_votes_up: :desc)
     render json: @post, status: :ok
   end
 
