@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	has_many :posts
+	has_many :posts, dependent: :destroy
 
 	def self.find_or_create_by_auth(github)
 
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
  			github: data['id'],
  			avatar: data['avatar_url'],
  			company: data['company'],
- 			url: data['url'],
+ 			url: data['html_url'],
  			blog: data['blog'],
  			location: data['location'],
  			follower_count: data['followers'],
