@@ -11,9 +11,6 @@ scope defaults: {format: 'json'} do
     member do
       put '/like', to: 'posts#upvote'
       put '/dislike', to: 'posts#downvote'
-      get '/:cached_votes_total', to: 'posts#show'
-      get '/:cached_votes_up', to: 'posts#show'
-      get '/:cached_votes_down', to: 'posts#show'
     end
   end
 
