@@ -511,10 +511,12 @@ Example Response:
     "parent_id": null,
     "user": {
       "id": 1,
-      "username": "taylor-d"
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
     },
     "post": {
-      "id": 2
+      "id": 2,
+      "content": "does this work?"
     }
   }
 }
@@ -538,10 +540,12 @@ Example Response:
       "parent_id": null,
       "user": {
         "id": 1,
-        "username": "taylor-d"
+        "username": "taylor-d",
+        "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
       },
       "post": {
-        "id": 2
+        "id": 2,
+        "content": "does this work?"
       }
     },
     {
@@ -550,10 +554,12 @@ Example Response:
       "parent_id": 1,
       "user": {
         "id": 1,
-        "username": "taylor-d"
+        "username": "taylor-d",
+        "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
       },
       "post": {
-        "id": 2
+        "id": 2,
+        "content": "does this work?"
       }
     }
   ]
@@ -575,15 +581,17 @@ Example Response:
 ```json
 {
   "comment": {
-    "id": 2,
-    "content": "cool!!",
-    "parent_id": 1,
+    "id": 1,
+    "content": "it sure does!",
+    "parent_id": null,
     "user": {
       "id": 1,
-      "username": "taylor-d"
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
     },
     "post": {
-      "id": 2
+      "id": 2,
+      "content": "does this work?"
     }
   }
 }
@@ -598,15 +606,17 @@ Example Response:
 ```json
 {
   "comment": {
-    "id": 2,
-    "content": "cool!!",
-    "parent_id": 1,
+    "id": 1,
+    "content": "it sure does!",
+    "parent_id": null,
     "user": {
       "id": 1,
-      "username": "taylor-d"
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
     },
     "post": {
-      "id": 2
+      "id": 2,
+      "content": "does this work?"
     }
   }
 }
@@ -628,15 +638,17 @@ Example Response:
 ```json
 {
   "comment": {
-    "id": 2,
-    "content": "cool!!",
-    "parent_id": 1,
+    "id": 1,
+    "content": "it sure does!",
+    "parent_id": null,
     "user": {
       "id": 1,
-      "username": "taylor-d"
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
     },
     "post": {
-      "id": 2
+      "id": 2,
+      "content": "does this work?"
     }
   }
 }
