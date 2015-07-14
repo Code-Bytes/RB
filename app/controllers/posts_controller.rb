@@ -38,6 +38,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post.cached_votes_total
+    @post.cached_votes_up
+    @post.cached_votes_down
     render json: @post, status: :ok
   end
 
