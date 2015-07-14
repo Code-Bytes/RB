@@ -350,7 +350,7 @@ Status code:`200`
 having issues spinning up a server on my local machine. will add json response on Monday
 ```
 
-###All Upvotes on a Post
+###Total Upvotes on a Post
 
 `GET 'posts/:id/:cached_votes_up'`
 
@@ -366,7 +366,7 @@ Status code:`200`
 having issues spinning up a server on my local machine. will add json response on Monday
 ```
 
-###All Downvotes on a Post
+###Total Downvotes on a Post
 
 `GET 'posts/:id/:cached_votes_down'`
 
