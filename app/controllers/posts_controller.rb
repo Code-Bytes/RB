@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.user == current_user
-      @post.destroy(post_params)
+      @post.destroy
       render json: @post, status: :ok
     else 
       render json: @post, status: :unprocessable_entity
