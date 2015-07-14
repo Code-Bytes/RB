@@ -446,9 +446,9 @@ Status code:`200`
     "created_at": "2015-07-14T16:26:41.841Z",
     "updated_at": "2015-07-14T18:01:24.634Z",
     "cached_votes_total": 1,
-    "cached_votes_up": 0,
-    "cached_votes_down": 1,
-    "cached_votes_score": -1,
+    "cached_votes_up": 1,
+    "cached_votes_down": 0,
+    "cached_votes_score": 1,
     "user": {
       "id": 1,
       "username": "taylor-d",
