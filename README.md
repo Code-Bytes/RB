@@ -31,9 +31,16 @@
 ####Voting
 
 * [Add an Upvote](#add-an-upvote)
-`PUT 'posts/like'`
-* [Add a Downvote](#get-all-posts)
-`PUT 'posts/dislike'`
+`PUT 'posts/:id/like'`
+* [Add a Downvote](#add-a-downvote)
+`PUT 'posts/:id/dislike'`
+* [Total Votes on a Post](#total-votes-on-a-post)
+`GET 'posts/:id/:cached_votes_total'`
+* [All Upvotes on a Post](#all-upvotes-on-a-post)
+`GET 'posts/:id/:cached_votes_up'`
+* [All Downvotes on a Post](#all-downvotes-on-a-post)
+`GET 'posts/:id/:cached_votes_down'`
+
 
 
 All authenticated requests are made by passing 'Authorization' in the request header.  That header will contain the JWT token returned after authentication.
@@ -316,6 +323,54 @@ having issues spinning up a server on my local machine. will add json response o
 `PUT 'posts/:id/dislike'`
 
 Adds a downvote (disagreement).
+
+No required params.
+
+Example Response:
+
+Status code:`200`
+
+```json
+having issues spinning up a server on my local machine. will add json response on Monday
+```
+
+###Total Votes on a Post
+
+`GET 'posts/:id/:cached_votes_total'`
+
+Retrieves total number of votes on a Post.
+
+No required params.
+
+Example Response:
+
+Status code:`200`
+
+```json
+having issues spinning up a server on my local machine. will add json response on Monday
+```
+
+###All Upvotes on a Post
+
+`GET 'posts/:id/:cached_votes_up'`
+
+Retrieves total number of upvotes on a Post.
+
+No required params.
+
+Example Response:
+
+Status code:`200`
+
+```json
+having issues spinning up a server on my local machine. will add json response on Monday
+```
+
+###All Downvotes on a Post
+
+`GET 'posts/:id/:cached_votes_down'`
+
+Retrieves total number of downvotes on a Post.
 
 No required params.
 
