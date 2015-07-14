@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if @post.save
       render json: @post, status: :ok
     else 
-      render json: @post, status: :unprocessable_entity
+      render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       @post.update(post_params)
       render json: @post, status: :ok
     else 
-      render json: @post, status: :unprocessable_entity
+      render json: {message: "Not Authorized"}, status: :unauthorized
     end
   end
 
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
       @post.destroy
       render json: @post, status: :ok
     else 
-      render json: @post, status: :unprocessable_entity
+      render json: {message: "Not Authorized"}, status: :unauthorized
     end
   end
 
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
       @post.vote_registered?
     render json: @post, status: :ok
     else 
-      render json: @post, status: :unprocessable_entity
+      render json: @post, status: :unauthorized
     end
   end
 
