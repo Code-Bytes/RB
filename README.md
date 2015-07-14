@@ -36,9 +36,9 @@
 `PUT 'posts/:id/dislike'`
 * [Total Votes on a Post](#total-votes-on-a-post)
 `GET 'posts/:id/:cached_votes_total'`
-* [All Upvotes on a Post](#all-upvotes-on-a-post)
+* [Total Upvotes on a Post](#total-upvotes-on-a-post)
 `GET 'posts/:id/:cached_votes_up'`
-* [All Downvotes on a Post](#all-downvotes-on-a-post)
+* [Total Downvotes on a Post](#total-downvotes-on-a-post)
 `GET 'posts/:id/:cached_votes_down'`
 
 
