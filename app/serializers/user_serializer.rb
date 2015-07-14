@@ -1,7 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
-  self.root = false
 
-  attributes :id, :email, :password, :username, 
+  attributes :id, :email, :username, 
   			 :github, :created_at, :updated_at, 
   			 :avatar, :company, :url, :location, 
   			 :follower_count, :following_count, 

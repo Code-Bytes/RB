@@ -34,14 +34,15 @@
 `PUT 'posts/:id/like'`
 * [Add a Downvote](#add-a-downvote)
 `PUT 'posts/:id/dislike'`
-* [Total Votes on a Post](#total-votes-on-a-post)
-`GET 'posts/:id/:cached_votes_total'`
-* [Total Upvotes on a Post](#total-upvotes-on-a-post)
-`GET 'posts/:id/:cached_votes_up'`
-* [Total Downvotes on a Post](#total-downvotes-on-a-post)
-`GET 'posts/:id/:cached_votes_down'`
 
+####Comment
 
+* [Create a Comment](#create-a-comment)
+* [Get Comments on a Post](#get-comments-on-a-post)
+* [Reply to a Comment](#reply-to-a-comment)
+* [Get a Comment](#get-a-comment)
+* [Update a Comment](#update-a-comment)
+* [Delete a comment](#delete-a-comment)
 
 All authenticated requests are made by passing 'Authorization' in the request header.  That header will contain the JWT token returned after authentication.
 
@@ -65,7 +66,21 @@ Status code:
 
 ```json
 {
-"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNn0.pGJXRN1Y32xO9ilKn-j7wdkK7CBUpCp49D7j-72Kokp1_bG09wphgTr0dimiJ8Fsqsut19SY3EYwMxkvGDqvZg"
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxfQ.G3wwMUmERIptYGDLwm5vp4o7uOcSi8Qrd3evA5YMp_WEYQp1e5lp0WqNo-p6BW3bTNb5C2NXBZvP790jVNnaYw",
+  "user": {
+    "user_id": 1,
+    "username": "taylor-d",
+    "email": "mdaugherty6@gmail.com",
+    "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
+    "company": "",
+    "url": "https://api.github.com/users/taylor-d",
+    "blog": "http://www.taylormath.com",
+    "location": "Atlanta, GA",
+    "follower_count": 13,
+    "following_count": 17,
+    "public_gists": 3,
+    "hireable": true
+  }
 }
 ```
 
@@ -84,14 +99,14 @@ Example response:
 Status code:`200`
 
 ```json
-   {
-    "id": 18,
+{
+  "user": {
+    "id": 1,
     "email": "mdaugherty6@gmail.com",
-    "password": "06becd1d7421eeff5846e0e2c3a4b27c",
     "username": "taylor-d",
     "github": "9401828",
-    "created_at": "2015-07-08T17:57:24.732Z",
-    "updated_at": "2015-07-10T00:30:14.142Z",
+    "created_at": "2015-07-14T16:20:46.964Z",
+    "updated_at": "2015-07-14T16:20:46.985Z",
     "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
     "company": "",
     "url": "https://api.github.com/users/taylor-d",
@@ -102,6 +117,7 @@ Status code:`200`
     "hireable": true,
     "blog": "http://www.taylormath.com"
   }
+}
 ```
 
 ###List all Users
@@ -112,26 +128,28 @@ No required params.
 
 Example Response:
 ```json
-[
-  {
-    "id": 18,
-    "email": "mdaugherty6@gmail.com",
-    "password": "06becd1d7421eeff5846e0e2c3a4b27c",
-    "username": "taylor-d",
-    "github": "9401828",
-    "created_at": "2015-07-08T17:57:24.732Z",
-    "updated_at": "2015-07-10T00:30:14.142Z",
-    "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
-    "company": "",
-    "url": "https://api.github.com/users/taylor-d",
-    "location": "Atlanta, GA",
-    "follower_count": 13,
-    "following_count": 17,
-    "public_gists": 3,
-    "hireable": true,
-    "blog": "http://www.taylormath.com"
-  }
-]
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "mdaugherty6@gmail.com",
+      "password": "f36452412da0a8a1892403b5f16f5f4d",
+      "username": "taylor-d",
+      "github": "9401828",
+      "created_at": "2015-07-14T16:20:46.964Z",
+      "updated_at": "2015-07-14T16:20:46.985Z",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
+      "company": "",
+      "url": "https://api.github.com/users/taylor-d",
+      "location": "Atlanta, GA",
+      "follower_count": 13,
+      "following_count": 17,
+      "public_gists": 3,
+      "hireable": true,
+      "blog": "http://www.taylormath.com"
+    }
+  ]
+}
 ```
 
 ###Find user by id
@@ -146,22 +164,23 @@ Example Response:
 
 ```json
 {
-  "id": 18,
-  "email": "mdaugherty6@gmail.com",
-  "password": "06becd1d7421eeff5846e0e2c3a4b27c",
-  "username": "taylor-d",
-  "github": "9401828",
-  "created_at": "2015-07-08T17:57:24.732Z",
-  "updated_at": "2015-07-10T00:30:14.142Z",
-  "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
-  "company": "",
-  "url": "https://api.github.com/users/taylor-d",
-  "location": "Atlanta, GA",
-  "follower_count": 13,
-  "following_count": 17,
-  "public_gists": 3,
-  "hireable": true,
-  "blog": "http://www.taylormath.com"
+  "user": {
+    "id": 1,
+    "email": "mdaugherty6@gmail.com",
+    "username": "taylor-d",
+    "github": "9401828",
+    "created_at": "2015-07-14T16:20:46.964Z",
+    "updated_at": "2015-07-14T16:20:46.985Z",
+    "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3",
+    "company": "",
+    "url": "https://api.github.com/users/taylor-d",
+    "location": "Atlanta, GA",
+    "follower_count": 13,
+    "following_count": 17,
+    "public_gists": 3,
+    "hireable": true,
+    "blog": "http://www.taylormath.com"
+  }
 }
 ```
 
@@ -177,16 +196,44 @@ Required params:
 Example Response:
 
 ```json
-[
-  {
-    "id": 1,
-    "title": "test",
-    "content": "test",
-    "user_id": 18,
-    "created_at": "2015-07-10T00:50:43.473Z",
-    "updated_at": "2015-07-10T00:50:43.473Z"
-  }
-]
+{
+  "users": [
+    {
+      "id": 2,
+      "title": "first post",
+      "content": "does this work?",
+      "user_id": 1,
+      "created_at": "2015-07-14T16:27:18.124Z",
+      "updated_at": "2015-07-14T16:27:18.124Z",
+      "cached_votes_total": 0,
+      "cached_votes_up": 0,
+      "cached_votes_down": 0,
+      "cached_votes_score": 0,
+      "user": {
+        "id": 1,
+        "username": "taylor-d",
+        "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+      }
+    },
+    {
+      "id": 1,
+      "title": "first post",
+      "content": "does this work?",
+      "user_id": 1,
+      "created_at": "2015-07-14T16:26:41.841Z",
+      "updated_at": "2015-07-14T16:26:41.841Z",
+      "cached_votes_total": 0,
+      "cached_votes_up": 0,
+      "cached_votes_down": 0,
+      "cached_votes_score": 0,
+      "user": {
+        "id": 1,
+        "username": "taylor-d",
+        "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+      }
+    }
+  ]
+}
 ```
 
 ###Create a Post
@@ -207,12 +254,23 @@ Status code:`200`
 
 ```json
 {
-  "id": 1,
-  "title": "test",
-  "content": "test",
-  "user_id": 18,
-  "created_at": "2015-07-10T00:50:43.473Z",
-  "updated_at": "2015-07-10T00:50:43.473Z"
+  "post": {
+    "id": 3,
+    "title": "this is another test",
+    "content": "does this work?",
+    "user_id": 1,
+    "created_at": "2015-07-14T17:50:14.191Z",
+    "updated_at": "2015-07-14T17:50:14.191Z",
+    "cached_votes_total": 0,
+    "cached_votes_up": 0,
+    "cached_votes_down": 0,
+    "cached_votes_score": 0,
+    "user": {
+      "id": 1,
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+    }
+  }
 }
 ```
 
@@ -229,32 +287,61 @@ Example response:
 Status code:`200`
 
 ```json
-[
-	{
-	  "id": 1,
-	  "title": "test",
-	  "content": "test",
-	  "user_id": 18,
-	  "created_at": "2015-07-10T00:50:43.473Z",
-	  "updated_at": "2015-07-10T00:50:43.473Z"
-	},
-	{
-	  "id": 2,
-	  "title": "test",
-	  "content": "test",
-	  "user_id": 18,
-	  "created_at": "2015-07-10T00:50:43.473Z",
-	  "updated_at": "2015-07-10T00:50:43.473Z"
-	},
-	{
-	  "id": 3,
-	  "title": "test",
-	  "content": "test",
-	  "user_id": 18,
-	  "created_at": "2015-07-10T00:50:43.473Z",
-	  "updated_at": "2015-07-10T00:50:43.473Z"
-	}
-]
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "first post",
+      "content": "does this work?",
+      "user_id": 1,
+      "created_at": "2015-07-14T16:26:41.841Z",
+      "updated_at": "2015-07-14T16:26:41.841Z",
+      "cached_votes_total": 0,
+      "cached_votes_up": 0,
+      "cached_votes_down": 0,
+      "cached_votes_score": 0,
+      "user": {
+        "id": 1,
+        "username": "taylor-d",
+        "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+      }
+    },
+    {
+      "id": 2,
+      "title": "first post",
+      "content": "does this work?",
+      "user_id": 1,
+      "created_at": "2015-07-14T16:27:18.124Z",
+      "updated_at": "2015-07-14T16:27:18.124Z",
+      "cached_votes_total": 0,
+      "cached_votes_up": 0,
+      "cached_votes_down": 0,
+      "cached_votes_score": 0,
+      "user": {
+        "id": 1,
+        "username": "taylor-d",
+        "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+      }
+    },
+    {
+      "id": 3,
+      "title": "this is another test",
+      "content": "does this work?",
+      "user_id": 1,
+      "created_at": "2015-07-14T17:50:14.191Z",
+      "updated_at": "2015-07-14T17:50:14.191Z",
+      "cached_votes_total": 0,
+      "cached_votes_up": 0,
+      "cached_votes_down": 0,
+      "cached_votes_score": 0,
+      "user": {
+        "id": 1,
+        "username": "taylor-d",
+        "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+      }
+    }
+  ]
+}
 ```
 
 ###Update a Post
@@ -277,12 +364,23 @@ Status code:`200`
 
 ```json
 {
-  "id": 1,
-  "title": "test",
-  "content": "test",
-  "user_id": 18,
-  "created_at": "2015-07-10T00:50:43.473Z",
-  "updated_at": "2015-07-10T00:50:43.473Z"
+  "post": {
+    "id": 1,
+    "title": "first post",
+    "content": "does this work?",
+    "user_id": 1,
+    "created_at": "2015-07-14T16:26:41.841Z",
+    "updated_at": "2015-07-14T16:26:41.841Z",
+    "cached_votes_total": 0,
+    "cached_votes_up": 0,
+    "cached_votes_down": 0,
+    "cached_votes_score": 0,
+    "user": {
+      "id": 1,
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+    }
+  }
 }
 ```
 
@@ -299,7 +397,25 @@ Example Response:
 Status code:`200`
 
 ```json
-{}
+{
+  "post": {
+    "id": 1,
+    "title": "first post",
+    "content": "does this work?",
+    "user_id": 1,
+    "created_at": "2015-07-14T16:26:41.841Z",
+    "updated_at": "2015-07-14T16:26:41.841Z",
+    "cached_votes_total": 0,
+    "cached_votes_up": 0,
+    "cached_votes_down": 0,
+    "cached_votes_score": 0,
+    "user": {
+      "id": 1,
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+    }
+  }
+}
 ```
 
 ###Add an Upvote
@@ -315,7 +431,25 @@ Example Response:
 Status code:`200`
 
 ```json
-having issues spinning up a server on my local machine. will add json response on Monday
+{
+  "post": {
+    "id": 1,
+    "title": "first post",
+    "content": "does this work?",
+    "user_id": 1,
+    "created_at": "2015-07-14T16:26:41.841Z",
+    "updated_at": "2015-07-14T18:01:24.634Z",
+    "cached_votes_total": 1,
+    "cached_votes_up": 0,
+    "cached_votes_down": 1,
+    "cached_votes_score": -1,
+    "user": {
+      "id": 1,
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+    }
+  }
+}
 ```
 
 ###Add a Downvote
@@ -331,5 +465,185 @@ Example Response:
 Status code:`200`
 
 ```json
-having issues spinning up a server on my local machine. will add json response on Monday
+{
+  "post": {
+    "id": 1,
+    "title": "first post",
+    "content": "does this work?",
+    "user_id": 1,
+    "created_at": "2015-07-14T16:26:41.841Z",
+    "updated_at": "2015-07-14T18:01:24.634Z",
+    "cached_votes_total": 1,
+    "cached_votes_up": 0,
+    "cached_votes_down": 1,
+    "cached_votes_score": -1,
+    "user": {
+      "id": 1,
+      "username": "taylor-d",
+      "avatar": "https://avatars.githubusercontent.com/u/9401828?v=3"
+    }
+  }
+}
+```
+
+###Create a Comment
+
+`POST '/posts/:post_id/comments'`
+
+Required Params: 
+
+* `content` => `string`, content of comment
+
+Example Response: 
+
+```json
+
+{
+  "comment": {
+    "id": 1,
+    "content": "it sure does!",
+    "parent_id": null,
+    "user": {
+      "id": 1,
+      "username": "taylor-d"
+    },
+    "post": {
+      "id": 2
+    }
+  }
+}
+
+```
+
+###Get Comments on a Post
+
+`GET '/posts/:post_id/comments'`
+
+No required comments.
+
+Example Response:
+
+```json
+{
+  "comments": [
+    {
+      "id": 1,
+      "content": "it sure does!",
+      "parent_id": null,
+      "user": {
+        "id": 1,
+        "username": "taylor-d"
+      },
+      "post": {
+        "id": 2
+      }
+    },
+    {
+      "id": 2,
+      "content": "im glad it works!",
+      "parent_id": 1,
+      "user": {
+        "id": 1,
+        "username": "taylor-d"
+      },
+      "post": {
+        "id": 2
+      }
+    }
+  ]
+}
+```
+
+###Reply to a Comment
+
+`POST '/comments/:id/reply'`
+
+Must be authenticated.
+
+Required Params: 
+
+* `content` => `string`, content of comment
+
+Example Response:
+
+```json
+{
+  "comment": {
+    "id": 2,
+    "content": "cool!!",
+    "parent_id": 1,
+    "user": {
+      "id": 1,
+      "username": "taylor-d"
+    },
+    "post": {
+      "id": 2
+    }
+  }
+}
+```
+
+###Get a Comment
+
+`GET 'comments/:id'`
+
+Example Response:
+
+```json
+{
+  "comment": {
+    "id": 2,
+    "content": "cool!!",
+    "parent_id": 1,
+    "user": {
+      "id": 1,
+      "username": "taylor-d"
+    },
+    "post": {
+      "id": 2
+    }
+  }
+}
+```
+
+###Update a Comment
+
+Must be authenticated.
+
+Optional Params:
+
+* `content` => `string`, content of comment
+
+
+`PUT '/comments/:id'`
+
+Example Response:
+
+```json
+{
+  "comment": {
+    "id": 2,
+    "content": "cool!!",
+    "parent_id": 1,
+    "user": {
+      "id": 1,
+      "username": "taylor-d"
+    },
+    "post": {
+      "id": 2
+    }
+  }
+}
+```
+
+###Delete a comment
+
+Must be authenticated.
+
+`DELETE '/comments/:id'`
+
+Example Response:
+
+```json
+{}
 ```
