@@ -38,11 +38,17 @@
 ####Comment
 
 * [Create a Comment](#create-a-comment)
+`POST '/posts/:id/comments'`
 * [Get Comments on a Post](#get-comments-on-a-post)
+`GET '/posts/:id/comments'`
 * [Reply to a Comment](#reply-to-a-comment)
+`POST '/comments/:id/reply'`
 * [Get a Comment](#get-a-comment)
+`GET '/comments/:id'`
 * [Update a Comment](#update-a-comment)
+`PUT '/comments/:id'`
 * [Delete a comment](#delete-a-comment)
+`DELETE '/comments/:id'`
 
 All authenticated requests are made by passing 'Authorization' in the request header.  That header will contain the JWT token returned after authentication.
 
