@@ -10,6 +10,7 @@ gem 'pg'
 gem 'puma'
 gem 'bcrypt', '~> 3.1.7'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'closure_tree'
 
 group :production do 
 	gem 'rack-cors', require: 'rack/cors'
@@ -19,9 +20,11 @@ end
 group :development, :test do 
 	gem 'pry'
 	gem 'pry-rails'
+	gem 'awesome_print'
 	gem 'byebug'
 	gem 'spring'
 end
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
