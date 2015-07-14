@@ -7,7 +7,12 @@ scope defaults: {format: 'json'} do
   put '/me', to: 'api#update'
 
 # Voting Routes
-  resources :posts do
+  resources :posts, except: [:new,:edit] do
+    resources :comments, except: [:new,:edit], shallow: true do
+      member do
+        post '/reply', to: 'comments#reply'
+      end
+    end
     member do
       put '/like', to: 'posts#upvote'
       put '/dislike', to: 'posts#downvote'
