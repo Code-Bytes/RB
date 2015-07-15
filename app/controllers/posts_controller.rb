@@ -41,7 +41,13 @@ class PostsController < ApplicationController
     @post.cached_votes_total
     @post.cached_votes_up
     @post.cached_votes_down
-    render json: @post, status: :ok
+    
+    if current_user
+      @voted = current_user.voted_as_when_voted_for(@post)
+      render json: {post: @post, voted: @voted} status: :ok
+    else
+      render json: @post, status: :ok
+    end
   end
 
   def upvote
