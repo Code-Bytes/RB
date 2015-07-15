@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.downvote_by current_user
       @post.vote_registered?
-    render json: @post, status: :ok
+      render json: @post, status: :ok
     else 
       render json: @post, status: :unprocessable_entity
     end
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :tag_names)
+    params.permit(:title, :content, :tag_names)
   end
 
 end
