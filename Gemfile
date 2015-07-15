@@ -11,9 +11,10 @@ gem 'puma'
 gem 'bcrypt', '~> 3.1.7'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'closure_tree'
+gem 'rack-cors', require: 'rack/cors'
+gem 'kaminari'
 
 group :production do 
-	gem 'rack-cors', require: 'rack/cors'
 	gem 'rails_12factor'
 end
 
