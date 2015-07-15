@@ -20,6 +20,7 @@ scope defaults: {format: 'json'} do
   end
 
 # Tag Routes
+  get '/tags', to: 'tags#index'
   get 'tags/:name', to: 'tags#show', as: 'tagged_posts'
 
 # User Routes
