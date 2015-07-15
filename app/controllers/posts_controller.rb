@@ -32,7 +32,16 @@ class PostsController < ApplicationController
   end
 
   def index
-    @post = Post.order(cached_votes_up: :desc)
+    if params[:sort]
+      case params[:sort]
+      when "new"
+        @post = Post.order(written_at: :desc).page(page).per(25)
+      when "top"
+        @post = Post.order(cached_votes_score: :desc).page(page).per(25)
+      end
+    else
+      @post = Post.order(cached_votes_score: :desc).page(page).per(25)
+    end
     render json: @post, status: :ok
   end
 
@@ -41,7 +50,13 @@ class PostsController < ApplicationController
     @post.cached_votes_total
     @post.cached_votes_up
     @post.cached_votes_down
-    render json: @post, status: :ok
+    
+    if current_user
+      @voted = current_user.voted_as_when_voted_for(@post)
+      render json: {post: @post, voted: @voted} status: :ok
+    else
+      render json: @post, status: :ok
+    end
   end
 
   def upvote
