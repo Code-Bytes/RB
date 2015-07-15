@@ -32,7 +32,16 @@ class PostsController < ApplicationController
   end
 
   def index
-    @post = Post.order(cached_votes_up: :desc)
+    if params[:sort]
+      case params[:sort]
+      when "new"
+        @post = Post.order(written_at: :desc).page(page).per(25)
+      when "top"
+        @post = Post.order(cached_votes_score: :desc).page(page).per(25)
+      end
+    else
+      @post = Post.order(cached_votes_score: :desc).page(page).per(25)
+    end
     render json: @post, status: :ok
   end
 
