@@ -165,6 +165,3 @@ DEPENDENCIES
   rails_12factor
   rest-client
   spring
-
-BUNDLED WITH
-   1.10.5

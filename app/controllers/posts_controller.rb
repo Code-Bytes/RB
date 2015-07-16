@@ -32,25 +32,25 @@ class PostsController < ApplicationController
   end
 
   def index
+    params[:page] ? page = params[:page] : page = 1
+
     if params[:sort]
       case params[:sort]
       when "new"
-        @post = Post.order(written_at: :desc).page(page).per(25)
+        @posts = Post.order(written_at: :desc).page(page).per(25)
       when "top"
-        @post = Post.order(cached_votes_score: :desc).page(page).per(25)
+        @posts = Post.order(cached_votes_score: :desc).page(page).per(25)
+      else
+        @posts = Post.order(cached_votes_score: :desc).page(page).per(25)
       end
     else
-      @post = Post.order(cached_votes_score: :desc).page(page).per(25)
+      @posts = Post.order(cached_votes_score: :desc).page(page).per(25)
     end
-    render json: @post, status: :ok
+    render json: @posts, status: :ok
   end
 
   def show
-    @post = Post.find(params[:id])
-    @post.cached_votes_total
-    @post.cached_votes_up
-    @post.cached_votes_down
-    
+    @post = Post.find(params[:id])    
     if current_user
       @voted = current_user.voted_as_when_voted_for(@post)
       render json: {post: @post, voted: @voted} status: :ok
