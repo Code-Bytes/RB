@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   def index
     params[:page] ? page = params[:page] : page = 1
     sort = params[:sort] 
-    tags = params[:tags].gsub(/\s+/, "").split(",")
+    tags = params[:tags].gsub(/\s+/, "").split(",") if params[:tags]
 
     if tags 
       @posts = Post.tagged_with(tags, any:true).page(page)
