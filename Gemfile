@@ -11,6 +11,7 @@ gem 'puma'
 gem 'bcrypt', '~> 3.1.7'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'closure_tree'
+gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rack-cors', require: 'rack/cors'
 gem 'kaminari'
 
