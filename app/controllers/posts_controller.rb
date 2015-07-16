@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(title: params[:title], content: params[:content], user:current_user)
+    @post.tag_list.add(params[:tags],parse:true) if params[:tags]
     if @post.save
       render json: @post, status: :ok
     else 
@@ -32,28 +33,32 @@ class PostsController < ApplicationController
   end
 
   def index
-    if params[:sort]
-      case params[:sort]
-      when "new"
-        @post = Post.order(written_at: :desc).page(page).per(25)
-      when "top"
-        @post = Post.order(cached_votes_score: :desc).page(page).per(25)
-      end
+    params[:page] ? page = params[:page] : page = 1
+    sort = params[:sort] 
+    tags = params[:tags].gsub(/\s+/, "").split(",")
+
+    if tags 
+      @posts = Post.tagged_with(tags, any:true).page(page)
     else
-      @post = Post.order(cached_votes_score: :desc).page(page).per(25)
+      @posts = Post.recent.page(page)
     end
-    render json: @post, status: :ok
+
+    if sort
+      case sort
+      when "new"
+        @posts = @posts.recent
+      when "top"
+        @posts = @posts.top
+      end
+    end
+    render json: @posts, status: :ok
   end
 
   def show
-    @post = Post.find(params[:id])
-    @post.cached_votes_total
-    @post.cached_votes_up
-    @post.cached_votes_down
-    
+    @post = Post.find(params[:id])    
     if current_user
       @voted = current_user.voted_as_when_voted_for(@post)
-      render json: {post: @post, voted: @voted} status: :ok
+      render json: {post: @post, voted: @voted}, status: :ok
     else
       render json: @post, status: :ok
     end
