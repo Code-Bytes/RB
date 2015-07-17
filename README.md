@@ -691,7 +691,7 @@ Example Response:
 {}
 ```
 
-* [Find all Tags](#find-all-tags)
+###Find All Tags
 
 `GET '/tags'`
 
@@ -738,7 +738,7 @@ Example response:
 }
 ```
 
-* [Find a Tag](#find-a-tag)
+###Find A Tag
 
 `GET '/tags/:name'`
 
