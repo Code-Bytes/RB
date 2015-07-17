@@ -38,9 +38,9 @@ class PostsController < ApplicationController
     tags = params[:tags].gsub(/\s+/, "").split(",") if params[:tags]
 
     if tags 
-      @posts = Post.tagged_with(tags, any:true).page(page)
+      @posts = Post.tagged_with(tags, any:true).top.page(page)
     else
-      @posts = Post.recent.page(page)
+      @posts = Post.top.page(page)
     end
 
     if sort

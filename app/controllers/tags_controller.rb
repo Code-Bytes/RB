@@ -1,13 +1,12 @@
 class TagsController < ApplicationController
   
   def index
-  	@tag = Tag.order(written_at: :desc).page(page).per(25)
-  	render json: @tag, status: :ok
+  	@tags = ActsAsTaggableOn::Tag.all
+  	render json: @tags, status: :ok
   end
 
   def show
-    @tag = Tag.find_by!(name: params[:name]).page(page).per(25)
-    @posts = @tag.posts.order(written_at: :desc).page(page).per(25)
-    render json: {tag: @tag, posts: @posts}, status: :ok
+    @tag = ActsAsTaggableOn::Tag.find_by(name: params[:name])
+    render json: @tag, status: :ok
   end
 end
