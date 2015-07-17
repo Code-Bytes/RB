@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   	@tags = ActsAsTaggableOn::Tag.all
   	search = params[:search]
   	@tags = ActsAsTaggableOn::Tag.where("name like ?", "%#{search}%") if search
-    @tags = @tags.map {|t| {name: t.name} }.to_json
+    @tags = @tags.map {|t| {text: t.name} }.to_json
   	render json: @tags, status: :ok
   end
 
