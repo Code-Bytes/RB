@@ -50,6 +50,12 @@
 * [Delete a comment](#delete-a-comment)
 `DELETE '/comments/:id'`
 
+####Tags
+* [Find all Tags](#find-all-tags)
+`GET '/tags'`
+* [Find a Tag](#find-a-tag)
+`GET '/tags/:name'`
+
 All authenticated requests are made by passing 'Authorization' in the request header.  That header will contain the JWT token returned after authentication.
 
 ###Authenticate User
@@ -254,6 +260,11 @@ Required Params:
 
 * `content` => `string`, content of post
 
+Optional Params:
+
+* `tags` => `string`
+  * tags must be comma seperated, contain no spaces between words.
+
 Example response:
 
 Status code:`200`
@@ -287,6 +298,21 @@ Status code:`200`
 Returns all posts from all users.
 
 No required params.
+
+Optional params: 
+
+* `sort` => `string`
+  * `new` => most recently created posts
+  * `top` => posts with most net votes
+
+* `page` => `string`, content of post
+  * paginates 15 posts for each page
+
+* `tags` => `string`
+  * tags must be comma seperated, contain no spaces between words.
+  * will return any posts with a tag in the list given.  
+
+
 
 Example response:
 
@@ -630,7 +656,6 @@ Optional Params:
 
 * `content` => `string`, content of comment
 
-
 `PUT '/comments/:id'`
 
 Example Response:
@@ -664,4 +689,68 @@ Example Response:
 
 ```json
 {}
+```
+
+* [Find all Tags](#find-all-tags)
+
+`GET '/tags'`
+
+Gets all tags.
+
+No required params.
+
+Example response:
+
+```json
+{
+  "tags": [
+    {
+      "id": 1,
+      "name": "javascript",
+      "taggings_count": 0
+    },
+    {
+      "id": 2,
+      "name": "java",
+      "taggings_count": 0
+    },
+    {
+      "id": 3,
+      "name": "c#",
+      "taggings_count": 0
+    },
+    {
+      "id": 4,
+      "name": "c",
+      "taggings_count": 0
+    },
+    {
+      "id": 5,
+      "name": "php",
+      "taggings_count": 0
+    },
+    {
+      "id": 6,
+      "name": "android",
+      "taggings_count": 0
+    }...
+  ]
+}
+```
+
+* [Find a Tag](#find-a-tag)
+
+`GET '/tags/:name'`
+
+No required params.
+
+Example response:
+
+```json
+{
+  "id": 1,
+  "name": "javascript",
+  "taggings_count": 0
+}
+
 ```
