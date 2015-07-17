@@ -4,7 +4,6 @@ class TagsController < ApplicationController
   	@tags = ActsAsTaggableOn::Tag.all
   	search = params[:search]
   	if search 
-  		binding.pry
   		@tags = ActsAsTaggableOn::Tag.where("name like ?", "%#{search}%")
   	end
   	render json: @tags, status: :ok
