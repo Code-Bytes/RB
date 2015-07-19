@@ -12,7 +12,7 @@ class PostSerializer < ActiveModel::Serializer
   :cached_votes_down, 
   :cached_votes_score, 
   :comment_number,
-  :voted
+  :voted_for
 
   has_one :user, 
   only: [:username, :avatar, :id]
@@ -27,7 +27,7 @@ class PostSerializer < ActiveModel::Serializer
   	object.comments.count
   end
 
-  def voted
+  def voted_for
     scope.voted_as_when_voted_for(object) if scope
   end
 
