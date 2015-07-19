@@ -56,12 +56,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])    
-    if current_user
-      @voted = current_user.voted_as_when_voted_for(@post)
-      render json: {post: @post, voted: @voted}, status: :ok
-    else
-      render json: @post, status: :ok
-    end
+    render json: @post, status: :ok
   end
 
   def upvote
