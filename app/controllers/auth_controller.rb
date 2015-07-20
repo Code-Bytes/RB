@@ -4,6 +4,7 @@ class AuthController < ApplicationController
 		#coordinate the params being passed into the github class
 		github = Github.new(params)
 		@user = User.find_or_create_by_auth(github)
+		UserNotifier.send_signup_confirmation_email(@user).deliver_now
 		render json: { 
 			token: Token.encode(@user.id), 
 			user: {
