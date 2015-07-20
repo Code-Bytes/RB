@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate!, only: [:create, :update, :delete]
 
   def create
-    @post = Post.new(title: params[:title], content: params[:content], gist_id: params[:gist_id] user:current_user)
+    @post = Post.new(title: params[:title], content: params[:content], gist_id: params[:gist_id], user:current_user)
     @post.tag_list.add(params[:tags],parse:true) if params[:tags]
     if @post.save
       render json: @post, status: :ok
