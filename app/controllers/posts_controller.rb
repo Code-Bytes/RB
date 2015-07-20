@@ -52,12 +52,12 @@ class PostsController < ApplicationController
       if sort
         case sort
         when "new"
-          @posts = @posts.recent.page(page)
+          @posts = Post.recent.page(page)
         when "top"
-          @posts = @posts.top.page(page)
+          @posts = Post.top.page(page)
         end
       else
-        @posts = @posts.top.page(page)
+        @posts = Post.top.page(page)
       end
     end
 
