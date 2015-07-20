@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   scope :recent, -> { order(created_at: :desc) }
   scope :top, -> {order(cached_votes_score: :desc)}
-  paginates_per 15
+  paginates_per 10
   acts_as_votable
   acts_as_taggable
   acts_as_taggable_on :language, :level
