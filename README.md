@@ -265,6 +265,9 @@ Optional Params:
 * `tags` => `string`
   * tags must be comma seperated, contain no spaces between words.
 
+* `gist_id` => `string`
+  * attach the gist hash to a post.  
+
 Example response:
 
 Status code:`200`
