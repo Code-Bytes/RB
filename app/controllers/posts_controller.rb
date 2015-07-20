@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate!, only: [:create, :update, :delete]
 
   def create
-    @post = Post.new(title: params[:title], content: params[:content], user:current_user)
+    @post = Post.new(title: params[:title], content: params[:content], gist_id: params[:gist_id] user:current_user)
     @post.tag_list.add(params[:tags],parse:true) if params[:tags]
     if @post.save
       render json: @post, status: :ok
@@ -56,6 +56,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])    
+    # if current_user
+    #   @voted = current_user.voted_as_when_voted_for(@post)
+    #   render json: {post: @post, voted: @voted}, status: :ok
+    # else
+    #   render json: @post, status: :ok
+    # end
     render json: @post, status: :ok
   end
 
