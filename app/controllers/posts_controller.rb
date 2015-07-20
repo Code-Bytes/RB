@@ -38,19 +38,29 @@ class PostsController < ApplicationController
     tags = params[:tags].gsub(/\s+/, "").split(",") if params[:tags]
 
     if tags 
-      @posts = Post.tagged_with(tags, any:true).top.page(page)
+      if sort 
+        case sort
+        when "new"
+          @posts = Post.tagged_with(tags, any:true).recent.page(page)
+        when "top"
+          @posts = Post.tagged_with(tags, any:true).top.page(page)
+        end
+      else
+        @posts = Post.tagged_with(tags, any:true).top.page(page)
+      end
     else
-      @posts = Post.top.page(page)
-    end
-
-    if sort
-      case sort
-      when "new"
-        @posts = @posts.recent
-      when "top"
-        @posts = @posts.top
+      if sort
+        case sort
+        when "new"
+          @posts = @posts.recent.page(page)
+        when "top"
+          @posts = @posts.top.page(page)
+        end
+      else
+        @posts = @posts.top.page(page)
       end
     end
+
     render json: @posts, status: :ok
   end
 
