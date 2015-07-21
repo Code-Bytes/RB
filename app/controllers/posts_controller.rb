@@ -61,7 +61,7 @@ class PostsController < ApplicationController
       end
     end
 
-    render json: @posts, status: :ok
+    render json: @posts, :meta => {:total => Post.count}, status: :ok
   end
 
   def show
