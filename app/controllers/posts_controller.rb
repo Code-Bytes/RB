@@ -41,12 +41,12 @@ class PostsController < ApplicationController
       if sort 
         case sort
         when "new"
-          @posts = Post.tagged_with(tags, any:true).recent.page(page)
+          @posts = Post.tagged_with(tags, match_all:true).recent.page(page)
         when "top"
-          @posts = Post.tagged_with(tags, any:true).top.page(page)
+          @posts = Post.tagged_with(tags, match_all:true).top.page(page)
         end
       else
-        @posts = Post.tagged_with(tags, any:true).top.page(page)
+        @posts = Post.tagged_with(tags, match_all:true).top.page(page)
       end
     else
       if sort
