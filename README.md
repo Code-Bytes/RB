@@ -751,9 +751,7 @@ Example response:
 
 ```json
 {
-  "id": 1,
-  "name": "javascript",
-  "taggings_count": 0
+  "text": "javascript",
 }
 
 ```

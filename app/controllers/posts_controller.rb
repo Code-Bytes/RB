@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(title: params[:title], content: params[:content], gist_id: params[:gist_id], user:current_user)
+
     @post.tag_list.add(params[:tags],parse:true) if params[:tags]
     if @post.save
       render json: @post, status: :ok
@@ -41,12 +42,12 @@ class PostsController < ApplicationController
       if sort 
         case sort
         when "new"
-          @posts = Post.tagged_with(tags, match_all:true).recent.page(page)
+          @posts = Post.tagged_with(tags, any:true).recent.page(page)
         when "top"
-          @posts = Post.tagged_with(tags, match_all:true).top.page(page)
+          @posts = Post.tagged_with(tags, any:true).top.page(page)
         end
       else
-        @posts = Post.tagged_with(tags, match_all:true).top.page(page)
+        @posts = Post.tagged_with(tags, any:true).top.page(page)
       end
     else
       if sort
@@ -66,12 +67,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])    
-    # if current_user
-    #   @voted = current_user.voted_as_when_voted_for(@post)
-    #   render json: {post: @post, voted: @voted}, status: :ok
-    # else
-    #   render json: @post, status: :ok
-    # end
     render json: @post, status: :ok
   end
 
