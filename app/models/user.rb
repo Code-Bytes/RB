@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
     github.get_data!
     data = github.data
 
+    user = User.find_or_initialize_by(github: data['id'], email: data['email'])
 
-    user = User.find_or_create_by(github: data['id'], email: data['email'])
+    UserNotifier.send_signup_confirmation_email(user).deliver_now if user.new_record?
+
     user.update(username: data['login'],
                 password: SecureRandom.hex,
                 github: data['id'],
