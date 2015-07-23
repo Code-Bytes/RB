@@ -17,25 +17,21 @@ class Stack
 				key: ACCESS_KEY,
 				page: page
 			},
-			accept: :json
-		}
+			accept: :json}
 
 		tags = JSON.parse(RestClient.get(BASE + TAGS,params))
 	end
 
 	def parse_tags(tags)
 		items = tags["items"]
-		items.map do |item|
-			item["name"]
-		end
+		items.map {|i| i["name"]}
 	end
 
 	def get_tags_up_to(page_num)
 		File.open(WRITE_FILE,"w") do |file|
 			page_num.times do |page|
 				tags =  parse_tags(get_tags(page+1))
-				tags.each do |tag|
-					file.puts tag
+				tags.each {|t| f.puts t}
 				end
 			end
 		end

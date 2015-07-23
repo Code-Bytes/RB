@@ -34,9 +34,33 @@ class PostsController < ApplicationController
   end
 
   def index
-    params[:page] ? page = params[:page] : page = 1
+    params[:page] ? page = params[:page].to_i : page = 1
     sort = params[:sort] 
-    tags = params[:tags].gsub(/\s+/, "").split(",") if params[:tags]
+
+    if params[:tags]
+      stripped_tags = params[:tags].gsub(/\s+/, "")
+      tags = stripped_tags.split(",") 
+    end
+
+    if page == 1
+      page_prev = nil
+      page_next = '2'
+    else
+      page_prev = (page - 1).to_s
+      page_next = (page + 1).to_s
+    end
+
+    next_page_params ={
+      page: page_next,
+      sort: sort,
+      tags: stripped_tags
+    }.reject{ |k,v| v.nil? }.to_query
+
+    prev_page_params ={
+      page: page_prev,
+      sort: sort,
+      tags: stripped_tags
+    }.reject{ |k,v| v.nil? }.to_query
 
     if tags 
       if sort 
@@ -62,7 +86,11 @@ class PostsController < ApplicationController
       end
     end
 
-    render json: @posts, :meta => {:total => Post.count}, status: :ok
+    render json: @posts, 
+    :meta => {
+      :total => Post.count, 
+      :prev => prev_page_params, 
+      :next => next_page_params}, status: :ok
   end
 
   def show
