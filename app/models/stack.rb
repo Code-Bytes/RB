@@ -32,7 +32,6 @@ class Stack
 			page_num.times do |page|
 				tags =  parse_tags(get_tags(page+1))
 				tags.each {|t| f.puts t}
-				end
 			end
 		end
 	end
