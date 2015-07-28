@@ -736,7 +736,7 @@ Example response:
       "id": 6,
       "name": "android",
       "taggings_count": 0
-    }...
+    }
   ]
 }
 ```
