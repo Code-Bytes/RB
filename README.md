@@ -1,8 +1,8 @@
-# CodeByte API
+# CodeBytes API
 
 `base_url: https://pacific-hamlet-4796.herokuapp.com/`
 
-###Quick Find:
+### Quick Find:
 
 #### Users
 
