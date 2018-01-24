@@ -1,10 +1,10 @@
-#CodeByte API
+# CodeByte API
 
 `base_url: https://pacific-hamlet-4796.herokuapp.com/`
 
 ###Quick Find:
 
-####Users
+#### Users
 
 * [Authenticate User](#authenticate-user)
 `POST '/auth/github'`
@@ -17,7 +17,7 @@
 * [List a User's Posts](#list-a-users-posts)
 `GET /users/:id/posts`
 
-####Posts
+#### Posts
 
 * [Create a Post](#create-a-post)
 `POST '/posts'`
@@ -28,14 +28,14 @@
 * [Delete a Post](#delete-a-post)
 `DELETE '/posts/:id'`
 
-####Voting
+#### Voting
 
 * [Add an Upvote](#add-an-upvote)
 `PUT 'posts/:id/like'`
 * [Add a Downvote](#add-a-downvote)
 `PUT 'posts/:id/dislike'`
 
-####Comment
+#### Comment
 
 * [Create a Comment](#create-a-comment)
 `POST '/posts/:id/comments'`
@@ -50,7 +50,7 @@
 * [Delete a comment](#delete-a-comment)
 `DELETE '/comments/:id'`
 
-####Tags
+#### Tags
 * [Find all Tags](#find-all-tags)
 `GET '/tags'`
 * [Find a Tag](#find-a-tag)
@@ -58,13 +58,13 @@
 
 All authenticated requests are made by passing 'Authorization' in the request header.  That header will contain the JWT token returned after authentication.
 
-###Authenticate User
+### Authenticate User
 
 `POST '/auth/github'`
 
 Returns a JWT token.
 
-Required Params: 
+Required Params:
 
 * `code` => `string`, temporary code returned by callback URL
 
@@ -96,13 +96,13 @@ Status code:
 }
 ```
 
-###Get Authenticated User
+### Get Authenticated User
 
 `GET '/me'`
 
 Returns the user object for the authenticated user.
 
-No required params. 
+No required params.
 
 User must be authenticated.
 
@@ -132,7 +132,7 @@ Status code:`200`
 }
 ```
 
-###List all Users
+### List all Users
 
 `GET '/users'`
 
@@ -164,7 +164,7 @@ Example Response:
 }
 ```
 
-###Find user by id
+### Find user by id
 
 `GET '/users/:id'`
 
@@ -196,7 +196,7 @@ Example Response:
 }
 ```
 
-###List a user's posts
+### List a user's posts
 
 `GET '/users/:id/posts'`
 
@@ -248,13 +248,13 @@ Example Response:
 }
 ```
 
-###Create a Post
+### Create a Post
 
 `POST '/posts'`
 
 Creates a post.  User must be authenticated.
 
-Required Params: 
+Required Params:
 
 * `title` => `string`, title of the post
 
@@ -294,7 +294,7 @@ Status code:`200`
 }
 ```
 
-###Get all Posts
+### Get all Posts
 
 `GET '/posts'`
 
@@ -302,7 +302,7 @@ Returns all posts from all users.
 
 No required params.
 
-Optional params: 
+Optional params:
 
 * `sort` => `string`
   * `new` => most recently created posts
@@ -379,7 +379,7 @@ Status code:`200`
 }
 ```
 
-###Update a Post
+### Update a Post
 
 `PUT '/posts/:id'`
 
@@ -393,7 +393,7 @@ Options params:
 
 * `content` => `string`, content of post
 
-Example Response: 
+Example Response:
 
 Status code:`200`
 
@@ -419,7 +419,7 @@ Status code:`200`
 }
 ```
 
-###Delete a Post
+### Delete a Post
 
 `DELETE '/posts/:id'`
 
@@ -453,7 +453,7 @@ Status code:`200`
 }
 ```
 
-###Add an Upvote
+### Add an Upvote
 
 `PUT 'posts/:id/like'`
 
@@ -487,7 +487,7 @@ Status code:`200`
 }
 ```
 
-###Add a Downvote
+### Add a Downvote
 
 `PUT 'posts/:id/dislike'`
 
@@ -521,15 +521,15 @@ Status code:`200`
 }
 ```
 
-###Create a Comment
+### Create a Comment
 
 `POST '/posts/:post_id/comments'`
 
-Required Params: 
+Required Params:
 
 * `content` => `string`, content of comment
 
-Example Response: 
+Example Response:
 
 ```json
 
@@ -552,7 +552,7 @@ Example Response:
 
 ```
 
-###Get Comments on a Post
+### Get Comments on a Post
 
 `GET '/posts/:post_id/comments'`
 
@@ -595,13 +595,13 @@ Example Response:
 }
 ```
 
-###Reply to a Comment
+### Reply to a Comment
 
 `POST '/comments/:id/reply'`
 
 Must be authenticated.
 
-Required Params: 
+Required Params:
 
 * `content` => `string`, content of comment
 
@@ -626,7 +626,7 @@ Example Response:
 }
 ```
 
-###Get a Comment
+### Get a Comment
 
 `GET 'comments/:id'`
 
@@ -651,7 +651,7 @@ Example Response:
 }
 ```
 
-###Update a Comment
+### Update a Comment
 
 Must be authenticated.
 
@@ -682,7 +682,7 @@ Example Response:
 }
 ```
 
-###Delete a comment
+### Delete a comment
 
 Must be authenticated.
 
@@ -694,7 +694,7 @@ Example Response:
 {}
 ```
 
-###Find All Tags
+### Find All Tags
 
 `GET '/tags'`
 
@@ -741,7 +741,7 @@ Example response:
 }
 ```
 
-###Find A Tag
+### Find A Tag
 
 `GET '/tags/:name'`
 
